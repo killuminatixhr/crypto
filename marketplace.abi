@@ -45,6 +45,12 @@
 				"internalType": "uint256",
 				"name": "price",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "nft_id",
+				"type": "uint256"
 			}
 		],
 		"name": "Listed",
@@ -151,6 +157,12 @@
 				"internalType": "uint256",
 				"name": "price",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "nft_id",
+				"type": "uint256"
 			}
 		],
 		"name": "Sold",
@@ -170,6 +182,12 @@
 				"internalType": "address",
 				"name": "seller",
 				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "nft_id",
+				"type": "uint256"
 			}
 		],
 		"name": "Unlisted",
