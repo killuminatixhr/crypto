@@ -1,22 +1,29 @@
 [
 	{
-		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"internalType": "address",
+				"name": "_currencyTokenAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_nftTokenAddress",
+				"type": "address"
+			},
+			{
 				"internalType": "uint256",
-				"name": "listing",
+				"name": "_marketPercent",
 				"type": "uint256"
 			},
 			{
-				"indexed": false,
 				"internalType": "address",
-				"name": "seller",
+				"name": "_marketCut",
 				"type": "address"
 			}
 		],
-		"name": "Listed",
-		"type": "event"
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"anonymous": false,
@@ -32,9 +39,15 @@
 				"internalType": "address",
 				"name": "seller",
 				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
 			}
 		],
-		"name": "ListedPack",
+		"name": "Listed",
 		"type": "event"
 	},
 	{
@@ -132,40 +145,15 @@
 				"internalType": "address",
 				"name": "buyer",
 				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
 			}
 		],
 		"name": "Sold",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "listing",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "seller",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "address",
-				"name": "buyer",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "pack_id",
-				"type": "uint256"
-			}
-		],
-		"name": "SoldPack",
 		"type": "event"
 	},
 	{
@@ -188,6 +176,32 @@
 		"type": "event"
 	},
 	{
+		"inputs": [],
+		"name": "DEFAULT_ADMIN_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "SETTINGS_ROLE",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -201,275 +215,8 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_pack_template_id",
-				"type": "uint256"
-			}
-		],
-		"name": "buyPack",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "role",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "grantRole",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_nft",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_price",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_creator",
-				"type": "address"
-			}
-		],
-		"name": "listNFT",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_pack_template_id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_price",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_creator",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "_packs",
-				"type": "uint256[]"
-			}
-		],
-		"name": "listPack",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes",
-				"name": "",
-				"type": "bytes"
-			}
-		],
-		"name": "onERC721Received",
-		"outputs": [
-			{
-				"internalType": "bytes4",
-				"name": "",
-				"type": "bytes4"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "role",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "renounceRole",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bytes32",
-				"name": "role",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "revokeRole",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_sale",
-				"type": "uint256"
-			}
-		],
-		"name": "unlistNFT",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_pack_template_id",
-				"type": "uint256"
-			}
-		],
-		"name": "unlistPack",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_percent",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_creator",
-				"type": "address"
-			}
-		],
-		"name": "updateCreatorPercent",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_address",
-				"type": "address"
-			}
-		],
-		"name": "updateMarketCutAddress",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_percent",
-				"type": "uint256"
-			}
-		],
-		"name": "updateMarketPercent",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_currencyTokenAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "_nftTokenAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_marketPercent",
-				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_marketCut",
-				"type": "address"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"inputs": [],
 		"name": "coinDecimal",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "creator_percentages",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -494,38 +241,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "DEFAULT_ADMIN_ROLE",
-		"outputs": [
-			{
-				"internalType": "bytes32",
-				"name": "",
-				"type": "bytes32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_creator",
-				"type": "address"
-			}
-		],
-		"name": "getCreatorPercent",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "percent",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -535,11 +250,6 @@
 		],
 		"name": "getListing",
 		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
 			{
 				"internalType": "address",
 				"name": "",
@@ -572,50 +282,6 @@
 				"internalType": "uint256",
 				"name": "percent",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_pack_template_id",
-				"type": "uint256"
-			}
-		],
-		"name": "getPackListing",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "",
-				"type": "bytes32"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
 			}
 		],
 		"stateMutability": "view",
@@ -696,6 +362,24 @@
 				"type": "address"
 			}
 		],
+		"name": "grantRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
 		"name": "hasRole",
 		"outputs": [
 			{
@@ -705,6 +389,24 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_nft",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			}
+		],
+		"name": "listNFT",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -725,7 +427,7 @@
 		"name": "nftToken",
 		"outputs": [
 			{
-				"internalType": "contract LoyaltyNFT",
+				"internalType": "contract IERC721",
 				"name": "",
 				"type": "address"
 			}
@@ -736,40 +438,71 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			},
+			{
+				"internalType": "bytes",
+				"name": "",
+				"type": "bytes"
 			}
 		],
-		"name": "packs",
+		"name": "onERC721Received",
 		"outputs": [
 			{
-				"internalType": "address",
-				"name": "poster",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "creator",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "pack_template_id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "price",
-				"type": "uint256"
-			},
-			{
-				"internalType": "bytes32",
-				"name": "status",
-				"type": "bytes32"
+				"internalType": "bytes4",
+				"name": "",
+				"type": "bytes4"
 			}
 		],
-		"stateMutability": "view",
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "renounceRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "role",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "revokeRole",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -788,11 +521,6 @@
 				"type": "address"
 			},
 			{
-				"internalType": "address",
-				"name": "creator",
-				"type": "address"
-			},
-			{
 				"internalType": "uint256",
 				"name": "nft",
 				"type": "uint256"
@@ -805,19 +533,6 @@
 			{
 				"internalType": "bytes32",
 				"name": "status",
-				"type": "bytes32"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "SETTINGS_ROLE",
-		"outputs": [
-			{
-				"internalType": "bytes32",
-				"name": "",
 				"type": "bytes32"
 			}
 		],
@@ -841,6 +556,45 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_sale",
+				"type": "uint256"
+			}
+		],
+		"name": "unlistNFT",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_address",
+				"type": "address"
+			}
+		],
+		"name": "updateMarketCutAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_percent",
+				"type": "uint256"
+			}
+		],
+		"name": "updateMarketPercent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
