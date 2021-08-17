@@ -3,11 +3,6 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_currencyTokenAddress",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
 				"name": "_nftTokenAddress",
 				"type": "address"
 			},
@@ -15,11 +10,6 @@
 				"internalType": "uint256",
 				"name": "_marketPercent",
 				"type": "uint256"
-			},
-			{
-				"internalType": "address",
-				"name": "_marketCut",
-				"type": "address"
 			}
 		],
 		"stateMutability": "nonpayable",
@@ -229,33 +219,7 @@
 		],
 		"name": "buyNFT",
 		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "coinDecimal",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "currencyToken",
-		"outputs": [
-			{
-				"internalType": "contract ERC20",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -560,6 +524,24 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "dev1",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "dev2",
+				"type": "address"
+			}
+		],
+		"name": "setReceiveAddress",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "bytes4",
 				"name": "interfaceId",
 				"type": "bytes4"
@@ -592,19 +574,6 @@
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "_address",
-				"type": "address"
-			}
-		],
-		"name": "updateMarketCutAddress",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "uint256",
 				"name": "_percent",
 				"type": "uint256"
@@ -613,6 +582,13 @@
 		"name": "updateMarketPercent",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "withdrawAll",
+		"outputs": [],
+		"stateMutability": "payable",
 		"type": "function"
 	}
 ]
