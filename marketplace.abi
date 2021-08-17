@@ -219,6 +219,7 @@
 		],
 		"name": "buyNFT",
 		"outputs": [],
+        "payable": true,
 		"stateMutability": "payable",
 		"type": "function"
 	},
